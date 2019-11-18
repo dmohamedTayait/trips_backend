@@ -37,7 +37,7 @@ class Api::V1::TripsController < Api::V1::ApiController
     }'
   def index
     status = params[:status] || 0
-    render_for_api :basic, json: Trip.where(status: status)
+    render_for_api :basic, json: current_driver.trips.where(status: status)
   end
 
   api! 'Create new trip.'
